@@ -1,0 +1,27 @@
+{
+  "articles": [{
+    "id": 1,
+    "title": "Html",
+    "author": "wzh",
+    "content": "超文本标记语言（英语：HyperText Markup Language，简称：HTML）是一种用于创建网页的标准标记语言。 HTML是一种基础技术，常与CSS、JavaScript一起被众多网站用于设计令人赏心悦目的网页、网页应用程序以及移动应用程序的用户界面。"
+  }, {
+    "id": 2,
+    "title": "Css",
+    "author": "howard",
+    "content": "层叠样式表（英语：Cascading Style Sheets，简写CSS），又称串樣式列表、级联样式表、串接样式表、层叠样式表、階層式樣式表，一种用来为结构化文档（如HTML 文档或XML 应用）添加样式（字体、间距和颜色等）的计算机语言，由W3C 定义和维护。"
+  }, {
+    "id": 3,
+    "title": "JavaScript",
+    "author": "howzh",
+    "content": "JavaScript，一种高级编程语言，通过解释执行，是一门动态类型，面向对象（基于原型）的直译语言。 它已经由ECMA（欧洲电脑制造商协会）通过ECMAScript实现语言的标准化。"
+  }],
+  "publishArticles": [{
+    "id": 2,
+    "title": "Css",
+    "author": "howard",
+    "content": "层叠样式表（英语：Cascading Style Sheets，简写CSS），又称串樣式列表、级联样式表、串接样式表、层叠样式表、階層式樣式表，一种用来为结构化文档（如HTML 文档或XML 应用）添加样式（字体、间距和颜色等）的计算机语言，由W3C 定义和维护。"
+  }],
+  "login": [
+    { "name": "wzh", "pwd": "wzhpwd" }
+  ]
+}
