@@ -1,0 +1,11 @@
+{
+  "name": "simple-test",
+  "version": "1.0.0",
+  "description": "koa2 simple test with small demo",
+  "main": "index.js",
+  "author": "howard",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.2.0"
+  }
+}
