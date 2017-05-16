@@ -1,35 +1,55 @@
 const Koa = require('koa')
-const fs = require('fs')
+const session = require('koa-session-minimal')
+const MysqlSession = require('koa-mysql-session')
+
 const app = new Koa()
 
-const Router = require('koa-router')
-
-let home = new Router()
-
-home.get('/', async (ctx) => {
-  let html = `
-    <ul>
-      <li><a href="/page/helloworld">/page/helloworld</a></li>
-      <li><a href="/page/404">/page/404</a></li>
-    </ul>
-  `
-  ctx.body = html
+// 配置存储session信息的mysql
+let store = new MysqlSession({
+  user: 'root',
+  password: 'test123',
+  database: 'todolist',
+  host: '127.0.0.1',
 })
 
-let page = new Router() 
+// 存放sessionId的cookie配置
+let cookie = {
+  maxAge: '', // cookie有效时长
+  expires: '',  // cookie失效时间
+  path: '', // 写cookie所在的路径
+  domain: '', // 写cookie所在的域名
+  httpOnly: '', // 是否只用于http请求中获取
+  overwrite: '',  // 是否允许重写
+  secure: '',
+  sameSite: '',
+  signed: '',
+}
 
-page.get('/404', async (ctx) => {
-  ctx.body = '404 page!'
-}).get('/helloworld', async (ctx) => {
-  ctx.body = 'helloworld page!'
+// 使用session中间件
+app.use(session({
+  key: 'SESSION_ID',
+  store: store,
+  cookie: cookie
+}))
+
+
+app.use( async ( ctx ) => {
+
+  // 设置session
+  if ( ctx.url === '/set' ) {
+    ctx.session = {
+      user_id: Math.random().toString(36).substr(2),
+      count: 0
+    }
+    ctx.body = ctx.session
+  } else if ( ctx.url === '/' ) {
+
+    // 读取session信息
+    ctx.session.count = ctx.session.count + 1
+    ctx.body = ctx.session
+  } 
+
 })
-
-let router = new Router()
-
-router.use('/', home.routes(), home.allowedMethods())
-router.use('/page', page.routes(), page.allowedMethods())
-
-app.use(router.routes()).use(router.allowedMethods())
 
 
 app.listen(3000, () => {
