@@ -6,6 +6,8 @@
   "author": "howard",
   "license": "MIT",
   "dependencies": {
+    "busboy": "^0.2.14",
+    "ejs": "^2.5.6",
     "fs": "0.0.1-security",
     "koa": "^2.2.0",
     "koa-bodyparser": "^3.2.0",
@@ -13,7 +15,10 @@
     "koa-mysql-session": "0.0.2",
     "koa-router": "^7.1.1",
     "koa-session-minimal": "^3.0.4",
-    "koa-static": "^3.0.0"
+    "koa-static": "^3.0.0",
+    "koa-views": "^6.0.2",
+    "os": "^0.1.1",
+    "util": "^0.10.3"
   },
   "devDependencies": {}
 }

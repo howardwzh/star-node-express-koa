@@ -1,11 +1,12 @@
 const Koa = require('koa')
-const path = require('path')
-const app = new Koa()
 const views = require('koa-views')
+const path = require('path')
+const convert = require('koa-convert')
 const static = require('koa-static')
-// const bodyParser = require('koa-bodyparser')
+const { uploadFile } = require('./util/upload')
 
-const { uploadFile } = require('./utils/upload')
+const app = new Koa()
+
 
 /**
  * 使用第三方中间件 start 
@@ -18,38 +19,38 @@ app.use(views(path.join(__dirname, './view'), {
 const staticPath = './static'
 // 由于koa-static目前不支持koa2
 // 所以只能用koa-convert封装一下
-app.use(static(
+app.use(convert(static(
   path.join( __dirname,  staticPath)
-))
+)))
 /**
  * 使用第三方中间件 end 
  */
 
-app.use( async ( ctx ) => {
 
+app.use( async ( ctx ) => {
   if ( ctx.method === 'GET' ) {
     let title = 'upload pic async'
-    await ctx.render('upload', {
+    await ctx.render('index', {
       title,
     })
   } else if ( ctx.url === '/api/picture/upload.json' && ctx.method === 'POST' ) {
     // 上传文件请求处理
     let result = { success: false }
-    let serverFilePath = path.join( __dirname, 'static/images' )
+    let serverFilePath = path.join( __dirname, 'static/image' )
 
     // 上传文件事件
     result = await uploadFile( ctx, {
-      fileType: 'album', // common or album
+      fileType: 'album',
       path: serverFilePath
     })
-
     ctx.body = result
   } else {
     // 其他请求显示404
     ctx.body = '<h1>404！！！ o(╯□╰)o</h1>'
   }
+  
 })
 
-app.listen(3000)
 
-console.log('[demo] upload-simple is starting at port 3000')
+app.listen(3000)
+console.log('[demo] upload-pic-async is starting at port 3000')
