@@ -15,7 +15,7 @@ npm init
 npm install koa
 ```
 #### index.js
-```index.js
+```js
 const Koa = require('koa')
 const app = new Koa()
 
@@ -111,7 +111,7 @@ module.exports = function () {
 
 PS: async 中间件只能在 koa v2中使用
 
-```
+```js
 const Koa = require('koa') // koa v2
 const loggerAsync  = require('./middleware/logger-async')
 const app = new Koa()
