@@ -44,7 +44,7 @@ class Work extends React.Component {
               />
             </Header>
             <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
-              Content
+              ContentContent
             </Content>
           </Layout>
         </Layout>
