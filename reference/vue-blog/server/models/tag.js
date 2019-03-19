@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
-const Schema = mongoose.Schema;
-const tagSchema = new Schema({
+const tagSchema = new mongoose.Schema({
   name: {
     type: String,
     default: ''
