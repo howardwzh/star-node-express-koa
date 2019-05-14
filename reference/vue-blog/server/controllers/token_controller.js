@@ -12,7 +12,7 @@ export async function initUser() {
     // 如果想更换用户名／密码，先将数据库原有user删除(drop)
     // 配置中加入用户名密码，重启服务即可
     user = new User({
-      name: 'hjm',
+      name: 'gzjk',
       username: config.admin.user,
       password: md5(config.admin.pwd).toUpperCase(),
       avatar: '',
